@@ -11,7 +11,13 @@ hello();
 const today = dayjs();
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM, D'));
+
+
+function renderOrderSummary() {
+  
+
 let cartSummaryHTML = '';
+
 
 cart.forEach((cartItem) => {
   const productId = cartItem.productId
@@ -34,6 +40,8 @@ cart.forEach((cartItem) => {
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days')
     const dateString = deliveryDate.format('dddd, MMMM, D');
+    
+
 
     cartSummaryHTML +=
     `<div class="cart-item-container 
@@ -129,5 +137,8 @@ document.querySelectorAll('.js-delivery-option').forEach((elment) => {
   elment.addEventListener('click', () => {
     const {productId, deliveryOptionId} = elment.dataset
     updateDeliveryOption(productId, deliveryOptionId);
+    renderOrderSummary();
   })
-})
+}) }
+
+renderOrderSummary()
