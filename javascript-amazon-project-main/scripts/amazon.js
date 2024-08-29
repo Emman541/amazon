@@ -1,7 +1,7 @@
 import { cart, addToCart } from '../data/cart.js';
 import { products, loadProducts } from '../data/products.js';
 import { formatCurrency } from "./utils/money.js";
-
+import { hamburgerButton } from '../data/hamburger.js';
 loadProducts(renderProductsGrid);
 
 function renderProductsGrid() {
@@ -70,18 +70,22 @@ function renderProductsGrid() {
 
   function updateCartQuantity() {
     let cartQuantity = 0;
+    let updateItemNumber = 0;
 
         cart.forEach((cartItem) => {
           cartQuantity += cartItem.quantity
+          updateItemNumber += cartItem.quantity
+          console.log(updateItemNumber);
         })
         
         document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+        document.querySelector('.js-return-to-home').innerText = `${updateItemNumber} items`
 
   }
 
   document.querySelectorAll('.js-add-to-cart')
     .forEach((button) =>{
-      button.addEventListener('click', () => {
+      button.addEventListener('click', () => { 
         const productId = button.dataset.productId;
 
         addToCart(productId);

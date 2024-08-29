@@ -89,7 +89,7 @@ async function loadPage() {
     return productsListHTML;
   }
 
-  document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+  // document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
 }
 
 loadPage();
